@@ -92,7 +92,7 @@ const t = {
     redirect: 'リダイレクト',
     secret: 'マルチパス シークレット',
     customer: '顧客データ',
-    alert: 'Invalid Input Content',
+    alert: '入力項目チェックしてください。',
     email: 'emailは必須。',
     button: 'マルチパス用のURL生成',
     doc: 'Shopify マルチパスドキュメント'
@@ -110,14 +110,14 @@ function App() {
         <button
           type="button"
           onClick={() => setIsJa(true)}
-          className="btn btn-outline-primary"
+          className={`btn ${isJa ? 'btn-primary' : 'btn-outline-primary'}`}
         >
           日本語
         </button>
         <button
           type="button"
           onClick={() => setIsJa(false)}
-          className="btn btn-outline-secondary"
+          className={`btn ${isJa ? 'btn-outline-warning' : 'btn-warning'}`}
         >
           English
         </button>
