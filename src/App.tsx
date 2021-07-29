@@ -207,7 +207,7 @@ function App() {
         </form>
       </div>
       <div className="container">
-        <p>Muliplepass URL:</p>
+        <p>Multipass URL:</p>
         <a href={state.url} target="_blank" rel="noopener noreferrer">
           {state.url}
         </a>
