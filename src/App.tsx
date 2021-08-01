@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import { Multipass } from 'multipass-js';
+import './App.css';
 
 enum ACTION_TYPES {
   CHANGE = 'CHANGE',
@@ -212,6 +213,12 @@ function App() {
           {state.url}
         </a>
       </div>
+      <footer className="pass-footer">
+        <button className="tesla">
+          Viewing existing code on{' '}
+          <a href="https://github.com/keidarcy/shopify-multipass-demo/">GitHub</a>
+        </button>
+      </footer>
     </>
   );
 }
