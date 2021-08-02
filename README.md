@@ -1,8 +1,5 @@
-# the demo to implement multipass
+# the quick playground to test multipass
 
-```
-yarn add multipass-js
-```
 
 ```ts
 import { Multipass } from "multipass-js"
