@@ -9,30 +9,15 @@ enum ACTION_TYPES {
 }
 
 const initialState = {
-  domain: 'xxx.myshopify.com',
+  domain: 'admin-596.myshopify.com',
   key: '',
-  redirect: '/',
+  redirect: '/account',
   data: JSON.stringify(
     {
       email: 'aaa@aaa.com',
       tag_string: 'multipass',
       first_name: 'TEST',
-      last_name: 'TEST',
-      addresses: [
-        {
-          address1: '123 Oak St',
-          city: 'Ottawa',
-          country: 'Canada',
-          first_name: 'TEST',
-          last_name: 'TEST',
-          phone: '555-1212',
-          province: 'Ontario',
-          zip: '123 ABC',
-          province_code: 'ON',
-          country_code: 'CA',
-          default: true
-        }
-      ]
+      last_name: 'TEST'
     },
     undefined,
     2
@@ -87,46 +72,18 @@ const t = {
     email: 'email is required.',
     button: 'Generate Mutipass URL',
     doc: 'Shopify multipass documentation'
-  },
-  ja: {
-    domain: 'Shopify ドメイン',
-    redirect: 'リダイレクト',
-    secret: 'マルチパス シークレット',
-    customer: '顧客データ',
-    alert: '入力項目チェックしてください。',
-    email: 'emailは必須。',
-    button: 'マルチパス用のURL生成',
-    doc: 'Shopify マルチパスドキュメント'
   }
 };
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [isJa, setIsJa] = useState(
-    !new URLSearchParams(window.location.search).get('lang')
-  );
+
   return (
     <>
-      <div className="btn-group" role="group" aria-label="Basic example">
-        <button
-          type="button"
-          onClick={() => setIsJa(true)}
-          className={`btn ${isJa ? 'btn-primary' : 'btn-outline-primary'}`}
-        >
-          日本語
-        </button>
-        <button
-          type="button"
-          onClick={() => setIsJa(false)}
-          className={`btn ${isJa ? 'btn-outline-warning' : 'btn-warning'}`}
-        >
-          English
-        </button>
-      </div>
       <div className="container my-5">
         <form>
           <div className="form-group">
-            <label htmlFor="domain">{isJa ? t.ja.domain : t.en.domain}</label>
+            <label htmlFor="domain">{t.en.domain}</label>
             <input
               type="input"
               className="form-control"
@@ -141,7 +98,7 @@ function App() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="redirect">{isJa ? t.ja.redirect : t.en.redirect}</label>
+            <label htmlFor="redirect">{t.en.redirect}</label>
             <input
               type="input"
               className="form-control"
@@ -156,7 +113,7 @@ function App() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="secret">{isJa ? t.ja.secret : t.en.secret}</label>
+            <label htmlFor="secret">{t.en.secret}</label>
             <input
               type="input"
               value={state.key}
@@ -174,11 +131,11 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {isJa ? t.ja.doc : t.en.doc}
+              {t.en.doc}
             </a>
           </div>
           <div className="form-group">
-            <label htmlFor="customer">{isJa ? t.ja.customer : t.en.customer}</label>
+            <label htmlFor="customer">{t.en.customer}</label>
             <textarea
               className="form-control"
               onChange={(e) =>
@@ -192,7 +149,7 @@ function App() {
               value={state.data}
             ></textarea>
             <small id="emailHelp" className="form-text text-muted">
-              {isJa ? t.ja.email : t.en.email}
+              {t.en.email}
             </small>
           </div>
           <button
@@ -203,7 +160,7 @@ function App() {
             }}
             className="btn btn-primary"
           >
-            {isJa ? t.ja.button : t.en.button}
+            {t.en.button}
           </button>
         </form>
       </div>
@@ -213,12 +170,6 @@ function App() {
           {state.url}
         </a>
       </div>
-      <footer className="pass-footer">
-        <button className="tesla">
-          Viewing existing code on{' '}
-          <a href="https://github.com/keidarcy/shopify-multipass-demo/">GitHub</a>
-        </button>
-      </footer>
     </>
   );
 }
