@@ -14,10 +14,9 @@ const initialState = {
   redirect: '/account',
   data: JSON.stringify(
     {
-      email: 'aaa@aaa.com',
-      tag_string: 'multipass',
-      first_name: 'TEST',
-      last_name: 'TEST'
+      email: '',
+      first_name: 'Sammy',
+      last_name: 'Anand'
     },
     undefined,
     2
@@ -37,7 +36,7 @@ const reducer = (state: State, action: Action) => {
       return { ...state, [action.payload.field]: action.payload.value };
     case ACTION_TYPES.SUBMIT: {
       if (!state.domain || !state.data || !state.key) {
-        alert('全項目は必須です。All fields are required.');
+        alert('All fields are required.');
         return state;
       } else {
         let url;
